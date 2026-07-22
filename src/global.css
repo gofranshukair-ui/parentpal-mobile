@@ -6,4 +6,12 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   --font-rounded: 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif;
   --font-serif: Georgia, 'Times New Roman', serif;
+
+  --color-background: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #5c5c5c;
+  --color-accent: #ff7f50;
+  --color-accent-pink: #ffd1dc;
+  --color-accent-peach: #ffdab9;
+  --color-accent-blue: #b0e0e6;
 }

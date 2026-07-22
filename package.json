@@ -3,7 +3,10 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "dependencies": {
+    "@expo-google-fonts/quicksand": "^0.4.1",
     "@expo/ui": "~56.0.14",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@supabase/supabase-js": "^2.0.0",
     "expo": "~56.0.5",
     "expo-constants": "~56.0.16",
     "expo-device": "~56.0.4",
@@ -11,6 +14,7 @@
     "expo-glass-effect": "~56.0.4",
     "expo-image": "~56.0.9",
     "expo-linking": "~56.0.12",
+    "expo-notifications": "~56.0.14",
     "expo-router": "~56.2.7",
     "expo-splash-screen": "~56.0.10",
     "expo-status-bar": "~56.0.4",
@@ -34,10 +38,13 @@
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "build:preview:android": "eas build --platform android --profile preview",
+    "build:preview:ios": "eas build --platform ios --profile preview-testflight",
+    "build:preview": "eas build --platform all --profile preview"
   },
   "private": true
 }
