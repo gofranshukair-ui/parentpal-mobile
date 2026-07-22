@@ -14,13 +14,14 @@ import { TopOfMindAccordion } from '@/components/top-of-mind-accordion';
 import { useAuth } from '@/context/auth-context';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
-import { api } from '@/services/api';
+import { api, ApiError } from '@/services/api';
 import type { ChildProfile, TopOfMindResponse } from '@/services/api-types';
 import { formatAge } from '@/utils/format-age';
 
 type TopOfMindState = {
   loading: boolean;
   data: TopOfMindResponse | null;
+  error: string | null;
 };
 
 type ChildCarouselProps = {
@@ -80,16 +81,18 @@ export function ChildCarousel({ profiles, onIndexChange }: ChildCarouselProps) {
     let cancelled = false;
 
     setTopOfMindByChildId(
-      Object.fromEntries(profiles.map((profile) => [profile.id, { loading: true, data: null }]))
+      Object.fromEntries(profiles.map((profile) => [profile.id, { loading: true, data: null, error: null }]))
     );
 
     Promise.all(
       profiles.map(async (profile) => {
         try {
           const data = await api.getChildTopOfMind(token, profile.id);
-          return [profile.id, { loading: false, data }] as const;
-        } catch {
-          return [profile.id, { loading: false, data: null }] as const;
+          return [profile.id, { loading: false, data, error: null }] as const;
+        } catch (err) {
+          const message =
+            err instanceof ApiError ? err.message : 'Could not load top-of-mind insights.';
+          return [profile.id, { loading: false, data: null, error: message }] as const;
         }
       })
     ).then((entries) => {
