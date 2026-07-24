@@ -44,7 +44,9 @@
     "lint": "expo lint",
     "build:preview:android": "eas build --platform android --profile preview",
     "build:preview:ios": "eas build --platform ios --profile preview-testflight",
-    "build:preview": "eas build --platform all --profile preview"
+    "build:preview": "eas build --platform all --profile preview",
+    "install:android": "adb uninstall com.parentpal.app || true",
+    "run:android:preview": "adb uninstall com.parentpal.app || true && eas build:run --platform android --profile preview --latest"
   },
   "private": true
 }

@@ -16,6 +16,7 @@ const config: ExpoConfig = {
     supportsTablet: true,
   },
   android: {
+    versionCode: 2,
     adaptiveIcon: {
       backgroundColor: '#FFD1DC',
       foregroundImage: './assets/images/android-icon-foreground.png',
