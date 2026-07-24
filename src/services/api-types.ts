@@ -38,6 +38,15 @@ export interface AgeStage {
   stage_label: string;
 }
 
+export interface DevelopmentSkill {
+  document_id: number;
+  title: string;
+  summary: string;
+  domain: string;
+  age_min_months: number | null;
+  age_max_months: number | null;
+}
+
 export interface TopOfMindCard {
   document_id: number;
   title: string;
@@ -46,16 +55,30 @@ export interface TopOfMindCard {
   source_name: string;
   source_url: string;
   similarity_score: number;
+  age_min_months?: number | null;
+  age_max_months?: number | null;
+}
+
+export interface RagSearchMetrics {
+  latency_ms: number;
+  top_k: number;
+  storage_mode: string;
+  match_count: number;
+  min_score: number | null;
+  max_score: number | null;
 }
 
 export interface TopOfMindResponse {
   child_id: number;
   child_name: string;
   age_stage: AgeStage;
-  query: string;
-  cards: TopOfMindCard[];
+  mastered_skills: DevelopmentSkill[];
+  working_on_skills: DevelopmentSkill[];
+  articles: TopOfMindCard[];
   message: string | null;
   disclaimer: string;
+  metrics: RagSearchMetrics;
+  age_filter_applied: boolean;
 }
 
 export interface GuidanceAskRequest {

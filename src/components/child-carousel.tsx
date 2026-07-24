@@ -50,9 +50,6 @@ function ChildCard({
       </View>
 
       <View style={styles.topOfMindSection}>
-        <ThemedText type="smallBold" style={styles.topOfMindTitle}>
-          Top of mind
-        </ThemedText>
         <TopOfMindAccordion state={topOfMindState} />
       </View>
     </ThemedView>
@@ -237,9 +234,6 @@ const styles = StyleSheet.create({
     gap: Spacing.two,
     width: '100%',
     alignItems: 'stretch',
-  },
-  topOfMindTitle: {
-    textAlign: 'center',
   },
   dots: {
     flexDirection: 'row',
